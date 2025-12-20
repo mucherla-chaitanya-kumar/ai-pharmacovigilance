@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AER Case Schema",
+  "type": "object",
+
+  "required": [
+    "case_id",
+    "patient",
+    "drug",
+    "event",
+    "administrative",
+    "narrative"
+  ],
+
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+
+    "patient": {
+      "type": "object",
+      "required": ["age", "gender"],
+      "properties": {
+        "age": { "type": "string" },
+        "gender": { "type": "string" },
+        "weight_value__v": { "type": "string" },
+        "height_value__v": { "type": "string" },
+        "id_value__v": { "type": "string" },
+
+        "patient_medical_history__v": { "type": "string" },
+        "patient_onset_age__v": { "type": "string" },
+        "patient_age_unit__v": { "type": "string" }
+      }
+    },
+
+    "drug": {
+      "type": "object",
+      "required": ["product_reported__v", "drug_role__v"],
+      "properties": {
+        "drug_list__v": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+
+        "product_reported__v": {
+          "type": "string"
+        },
+
+        "dose_value__v": { "type": "string" },
+        "dose_unit__v": { "type": "string" },
+        "drug_route__v": { "type": "string" },
+        "frequency_value__v": { "type": "string" },
+
+        "therapy_start_date__v": { "type": "string" },
+        "therapy_end_date__v": { "type": "string" },
+
+        "drug_role__v": {
+          "type": "string",
+          "enum": ["Suspect", "Concomitant", "Interacting", "Unknown"]
+        }
+      }
+    },
+
+    "event": {
+      "type": "object",
+      "required": ["event_reported__v"],
+      "properties": {
+        "event_reported__v": { "type": "string" },
+        "onset_idate__v": { "type": "string" },
+
+        "seriousness__v": {
+          "type": "string",
+          "enum": [
+            "Serious",
+            "Non-serious",
+            "Unknown"
+          ]
+        },
+
+        "hospitalization_required__v": {
+          "type": "string",
+          "enum": ["Yes", "No", "Unknown"]
+        },
+
+        "outcome__v": { "type": "string" }
+      }
+    },
+
+    "reporter": {
+      "type": "object",
+      "properties": {
+        "reporter_qualification__v": { "type": "string" },
+        "country__v": { "type": "string" },
+        "relatedness__v": { "type": "string" }
+      }
+    },
+
+    "administrative": {
+      "type": "object",
+      "required": [
+        "report_date__v",
+        "received_date__v",
+        "company_id__v",
+        "source_type__v",
+        "version__v"
+      ],
+      "properties": {
+        "report_date__v": { "type": "string" },
+        "received_date__v": { "type": "string" },
+        "company_id__v": { "type": "string" },
+        "source_type__v": { "type": "string" },
+        "version__v": { "type": "string" }
+      }
+    },
+
+    "narrative": {
+      "type": "string"
+    }
+  }
+}

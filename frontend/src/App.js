@@ -1,13 +1,6 @@
 import React from "react";
-import UploadForm from "./components/UploadForm";
+import Home from "./pages/Home";
 
-function App() {
-  return (
-    <div>
-      <h1>Pharmacovigilance App 🌿</h1>
-      <UploadForm />
-    </div>
-  );
+export default function App() {
+  return <Home />;
 }
-
-export default App;
